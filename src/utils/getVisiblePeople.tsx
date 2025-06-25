@@ -8,7 +8,7 @@ export function getVisiblePeople(
   centuries: string[],
   query: string,
   sort: SortTypesValues,
-  order: 'desc' | null,
+  order: string | null,
 ) {
   let peopleCopy = [...people];
 

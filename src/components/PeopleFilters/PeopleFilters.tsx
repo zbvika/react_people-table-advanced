@@ -7,7 +7,7 @@ export const PeopleFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const activeSex = searchParams.get('sex') || null;
-  const activeCenturies = searchParams.getAll('centuries') || null;
+  const activeCenturies = searchParams.getAll('centuries');
   const query = searchParams.get('query') || '';
 
   function toggleCenturies(century: string) {

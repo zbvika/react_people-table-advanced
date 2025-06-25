@@ -21,7 +21,7 @@ export const useFilterPeople = (people: Person[] | null) => {
         centuries,
         query,
         sort as SortTypesValues,
-        order as 'desc',
+        order,
       )
     : [];
 
