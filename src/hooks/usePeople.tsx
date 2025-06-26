@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Person } from '../types';
 import { getPeople } from '../api';
+import { PeopleErrors } from '../types/Errors';
 
 export const usePeople = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
@@ -16,7 +17,7 @@ export const usePeople = () => {
 
       setPeople(arrayOfPeople);
     } catch {
-      setError('Something went wrong');
+      setError(PeopleErrors.Unknown);
     } finally {
       setIsLoading(false);
     }

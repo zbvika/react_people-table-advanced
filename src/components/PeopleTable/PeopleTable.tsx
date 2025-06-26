@@ -3,7 +3,7 @@ import { PeopleList } from '../PeopleList';
 import { SearchLink } from '../SearchLink';
 import cn from 'classnames';
 
-const tableHeaders: string[] = [
+const TABLE_HEADERS: string[] = [
   'Name',
   'Sex',
   'Born',
@@ -43,7 +43,7 @@ export const PeopleTable = () => {
     >
       <thead>
         <tr>
-          {tableHeaders.map(header => {
+          {TABLE_HEADERS.map(header => {
             const isSortButtonVisible =
               header !== 'Mother' && header !== 'Father';
 

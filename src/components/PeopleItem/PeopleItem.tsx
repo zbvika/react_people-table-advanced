@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const PeopleItem: React.FC<Props> = ({ person }) => {
+  const { sex, born, died, motherName, fatherName, slug } = person;
   const { people } = useContext(PeopleContext);
   const { personSlug } = useParams();
   const selectedPersonSlug = personSlug;
@@ -22,38 +23,34 @@ export const PeopleItem: React.FC<Props> = ({ person }) => {
     ? people?.find(per => per.name === person.fatherName)
     : undefined;
 
+  const motherElement = mother ? (
+    <PersonLink person={mother} />
+  ) : (
+    motherName || '-'
+  );
+
+  const fatherElement = father ? (
+    <PersonLink person={father} />
+  ) : (
+    fatherName || '-'
+  );
+
   return (
     <tr
       data-cy="person"
       className={cn({
-        'has-background-warning': selectedPersonSlug === person.slug,
+        'has-background-warning': selectedPersonSlug === slug,
       })}
     >
       <td>
         <PersonLink person={person} />
       </td>
 
-      <td>{person.sex}</td>
-      <td>{person.born}</td>
-      <td>{person.died}</td>
-      <td>
-        {mother ? (
-          <PersonLink person={mother} />
-        ) : person.motherName ? (
-          person.motherName
-        ) : (
-          '-'
-        )}
-      </td>
-      <td>
-        {father ? (
-          <PersonLink person={father} />
-        ) : person.fatherName ? (
-          person.fatherName
-        ) : (
-          '-'
-        )}
-      </td>
+      <td>{sex}</td>
+      <td>{born}</td>
+      <td>{died}</td>
+      <td>{motherElement}</td>
+      <td>{fatherElement}</td>
     </tr>
   );
 };
